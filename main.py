@@ -64,9 +64,8 @@ def remove_expense():
     current_selected_expense = table.item(table.focus())
     values_selected = current_selected_expense['values']
 
-    surety = mb.askyesno('Are you sure?', f'Are you sure that you want to delete the record of {values_selected[2]}')
 
-    if surety:
+    if surety := mb.askyesno('Are you sure?', f'Are you sure that you want to delete the record of {values_selected[2]}'):
         connector.execute('DELETE FROM ExpenseTracker WHERE ID=%d' % values_selected[0])
         connector.commit()
 
@@ -74,9 +73,8 @@ def remove_expense():
         mb.showinfo('Record deleted successfully!', 'The record you wanted to delete has been deleted successfully')
 
 def remove_all_expenses():
-    surety = mb.askyesno('Are you sure?', 'Are you sure that you want to delete all the expense items from the database?', icon='warning')
 
-    if surety:
+    if surety := mb.askyesno('Are you sure?', 'Are you sure that you want to delete all the expense items from the database?', icon='warning'):
         table.delete(*table.get_children())
 
         connector.execute('DELETE FROM ExpenseTracker')
@@ -158,9 +156,8 @@ def expense_to_words_before_adding():
 
     message = f'Your expense can be read like: \n"You paid {amnt.get()} to {payee.get()} for {desc.get()} on {date.get_date()} via {MoP.get()}"'
 
-    add_question = mb.askyesno('Read your record like: ', f'{message}\n\nShould I add it to the database?')
 
-    if add_question:
+    if add_question := mb.askyesno('Read your record like: ', f'{message}\n\nShould I add it to the database?'):
         add_another_expense()
     else:
         mb.showinfo('Ok', 'Please take your time to add this record')
