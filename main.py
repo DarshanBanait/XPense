@@ -263,7 +263,7 @@ table.place(relx=0, y=0, relheight=1, relwidth=1)
 list_all_expenses()
 
 # Load your custom logo image
-logo_image = PhotoImage(file="C:/Users/darsh/OneDrive/Desktop/ExpenseTracker/XPense logo.png")
+logo_image = PhotoImage(file="XPense\XPense logo.png")
 
 # Set the logo as the window icon
 root.iconphoto(True, logo_image)
